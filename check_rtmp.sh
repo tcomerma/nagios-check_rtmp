@@ -69,9 +69,9 @@ NAME=`echo $URL | sed -e s/[^A-Za-z0-9.]/_/g`
 ERR=/tmp/check_rtmp_err_$NAME.tmp
 
 # Testejant
-$RTMPDUMP --live -r $URL --stop $TIMEOUT > /dev/null 2> $ERR
+$RTMPDUMP --live -r $URL --stop $TIMEOUT > /dev/null 2> $ERR & sleep 3
 status=$?
-
+sleep 4 && ps -ef | grep "$RTMPDUMP --live -r $URL" | grep -v grep | awk '{print $2}' | xargs -r sudo kill -9
 
 # Retorn de resultats
 CONNECTA=`grep "INFO: Connected" $ERR`
