@@ -7,6 +7,29 @@ It uses the rtmpdump (http://rtmpdump.mplayerhq.hu/) utility for connecting to a
 and determine if it's working or not.
 
 
+## Usage
+
+Copy file `check_rtmp.sh` to `${nagios_home}/libexec/check_rtmp.sh`
+
+Add command to `${nagios_home}/etc/objects/commands.cfg`
+
+```
+define command{
+  command_name    check_rtmp
+  command_line    $USER1$/check_rtmp.sh $ARG1$
+}
+
+```
+
+In service (`${nagios_home}/etc/server/services.cfg`)
+
+```
+define service {
+  ...
+  check_command check_rtmp! -u <url> -t <timeout>
+}
+```
+
 AUTHOR: Toni Comerma
 DATE: jan-2013
 
