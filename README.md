@@ -33,6 +33,9 @@ define service {
 AUTHOR: Toni Comerma
 DATE: jan-2013
 
+AUTHOR: chadliu23
+DATE: jul-2019
+
 Notes:
   - The plugin leaves temporary files under /tmp
   - You should not run concurrent executions of this plugin for the same stream name (as they will share the same temporary file) and 
